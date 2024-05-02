@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head >
+        My Personal Practice
+    </head>
+    <body >
+        <p></p>
+        <button class="js-show-quantity" onclick="showChart()">Show Quantity</button>
+        <button class="js-add-to-chart" onclick="addToChart()">Add to Cart</button>
+        <button class="js-add-2" onclick="addToChart1()">+2</button>
+        <button class="js-add-3" onclick="addToChart2()">+3</button>
+        <button class="js-add-4" onclick="addToChart3()">+4</button>
+        <button class="js-add-5" onclick="addToChart4()">+5</button>
+        <button class="js-remove-from-chart" onclick="removeFromChart()">Remove from chart</button>
+        <button class="js-subtract-2" onclick="removeFromChart2()">-2</button>
+        <button class="js-subtract-3" onclick="removeFromChart3()">-3</button>
+        <p class="js-show-chart"></p>
+        <script>
+            let quantity = 0;
+            function addToChart(){
+                quantity++;
+                showChart();
+            }
+            function addToChart1(){
+                quantity +=2;
+                showChart();
+            }
+            function addToChart2(){
+                quantity +=3;
+                showChart();
+            }
+            function addToChart3(){
+                quantity +=4;
+                showChart();
+            }
+            function addToChart4(){
+                quantity +=5;
+                showChart();
+            }
+            function removeFromChart(){
+                if(quantity<1) quantity = quantity;
+                else quantity--;
+                showChart()
+            }
+            function removeFromChart2(){
+                if(quantity<2) quantity = quantity;
+                else quantity -=2;
+                showChart();
+            }
+            function removeFromChart3(){
+                if(quantity<3) quantity = quantity;
+                else quantity -=3;
+                showChart();
+            }
+            
+            function showChart(){
+                document.querySelector('.js-show-chart').innerHTML = `Cart quantity: ${quantity}`;
+            }
+
+        </script>
+    </body>
+</html>

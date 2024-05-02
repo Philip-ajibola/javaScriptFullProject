@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <button class="js-head" onclick="pickHead()">Heads</button>
+        <button class="js-tail" onClick="pickTail()">Tails</button>
+        <p class="js-show-response"></p>
+
+        <input class="user-input" type="text" placeholder="Name" onkeydown=" if(event.key === 'Enter'){enterName();}"  >
+        <button class="submit-button" onclick="enterName()">Submit</button>
+        <p class="js-your-name"></p>
+        <input class="user-input1" type="text" placeholder="name" onkeyup=" displayWhatUserIstyping()">
+        <p class="output"></p>
+        <script>
+            function pickHead(){
+                document.querySelector('.js-show-response').innerHTML = `You chose: Heads`;
+                console.log(`You chose: Heads`)
+            }
+            function pickTail(){
+                document.querySelector('.js-show-response').innerHTML = `You chose: Tails`;
+            }
+            function enterName(){
+                const name = document.querySelector('.user-input');
+                document.querySelector('.js-your-name').innerHTML = `Your Name; ${name.value}`;
+                console.log(document.querySelector('.js-your-name').innerHTML = `Your Name; ${name.value}`);
+            }
+            function displayWhatUserIstyping(){
+                    let output = document.querySelector('.user-input1').value;
+                    document.querySelector('.output').innerHTML = output;
+            }
+
+
+        </script>
+    </body>
+</html>

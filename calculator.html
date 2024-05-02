@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head></head>
+    <body>
+        <p class="js-show-out-put"></p>
+        <p class="js-show-answer"></p>
+        <button class="js-button1" onclick="addNumber1()" onkeyup="showInput()">1</button>
+        <button class="js-button2" onclick="addNumber2()" onkeyup="showInput()">2</button>
+        <button class="js-button3" onclick="addNumber3()" onkeyup="showInput()">3</button>
+        <button class="js-add-button" onclick="plus()" onkeyup="showInput()">+</button>
+        <p></p>
+
+        <button class="js-button4" onclick="addNumber4()" onkeyup="showInput()">4</button>
+        <button class="js-button5" onclick="addNumber5()" onkeyup="showInput()">5</button>
+        <button class="js-button6" onclick="addNumber6()" onkeyup="showInput()">6</button>
+        <button class="js-subtract-button" onclick="minus()" onkeyup="showInput()">-</button>
+        <p></p>
+
+        <button class="enter-button" onclick="showAnswer()">Enter</button>
+        <script>
+            
+            let input = '';
+            let result = 0;
+            function addNumber1(){
+                    input += document.querySelector('.js-button1').innerText;
+                    showInput();
+            }
+            function addNumber2(){
+                    input += document.querySelector('.js-button2').innerText;
+                    showInput();
+            }
+            function addNumber3(){
+                    input += document.querySelector('.js-button3').innerText;
+                    showInput();
+            }
+            function addNumber4(){
+                    input += document.querySelector('.js-button4').innerText;
+                    showInput();
+            }
+            function addNumber5(){
+                    input += document.querySelector('.js-button5').innerText;
+                    showInput();
+            }
+            function addNumber6(){
+                    input += document.querySelector('.js-button6').innerText;
+                    showInput();
+            }
+            function plus(){
+                    input += document.querySelector('.js-add-button').innerText;
+                    showInput();
+            }
+            function minus(){
+                    input += document.querySelector('.js-subtract-button').innerText;
+                    showInput();
+            }
+            function showInput(){
+                document.querySelector('.js-show-out-put').innerHTML = input;
+            }
+            function showAnswer(){
+                let numbers = [];
+                if(input.includes('-')){
+                    numbers = input.split('-');
+                    for(let count = 0; count<numbers.length;count++){
+                    result -=Number(numbers[count]);
+                }
+                }
+                if(input.includes('+')){
+                    numbers = input.split('+');
+                    console.log(numbers);
+                    for(let count = 0; count<numbers.length;count++){
+                    result +=Number(numbers[count]);
+                }
+                }
+            
+                document.querySelector('.js-show-answer').innerHTML = result;
+            }
+
+        </script>
+    </body>
+</html>

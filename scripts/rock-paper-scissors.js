@@ -1,77 +1,47 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Rock Paper Scissors</title>
-  </head>
-  <body>
-    <p>Rock Paper Scissors</p>
-    <button onclick="
-         playGame('Rock')"
-         >
-      Rock
-    </button>
-    <button onclick="
-      playGame('Paper');
-  ">
-      Paper
-    </button>
-    <button onclick="
-      playGame('Scissors')
-    ">
-      Scissors
-    </button>
-    <button onclick="
-        score.draw = 0
-        score.losses = 0
-        score.wins = 0
-        localStorage.removeItem('score')
-    ">
-      Reset score
-    </button>
-    <script>
+
       let score = JSON.parse(localStorage.getItem('score')) ||  {
               draw : 0,
               losses : 0,
               wins : 0
             };
-
+            updateScore();
         function playGame(playerMove){
           const computerMove = pickComputerMove();
           let result = '';
 
-          if(playerMove === 'Paper'){
-            if(computerMove === 'Paper'){
+          if(playerMove === 'paper'){
+            if(computerMove === 'paper'){
               result = 'It is Tie.';
             }
-            else if(computerMove === 'Rock'){
+            else if(computerMove === 'rock'){
               result = 'You Win.';
             }
-            else if (computerMove === 'Scissors'){
+            else if (computerMove === 'scissors'){
               result = 'You Lose.';
             }
         }
         
-         else if(playerMove === 'Scissors'){
-            if(computerMove === 'Scissors'){
+         else if(playerMove === 'scissors'){
+            if(computerMove === 'scissors'){
               result = 'It is Tie.';
             }
-            else if(computerMove === 'Rock'){
+            else if(computerMove === 'rock'){
               result = 'You Lose.';
             }
-            else if (computerMove === 'Paper'){
+            else if (computerMove === 'paper'){
               result = 'You Win.';
             }
            
         }
         
-        else if(playerMove === 'Rock'){
-          if(computerMove === 'Rock'){
+        else if(playerMove === 'rock'){
+          if(computerMove === 'rock'){
             result = 'It is Tie.';
           }
-          else if(computerMove === 'Paper'){
+          else if(computerMove === 'paper'){
             result = 'You Lose.';
           }
-          else if (computerMove === 'Scissors'){
+          else if (computerMove === 'scissors'){
             result = 'You Win.';
           }
         }
@@ -87,8 +57,19 @@
           } 
           localStorage.setItem('score', JSON.stringify(score))
           
-        alert(`You Picked ${playerMove}, Computer Picks ${computerMove}. ${result}
-Wins: ${score.wins} Draws: ${score.draw} Losses: ${score.losses}`);
+          updateScore();
+          document.querySelector('.js-result').innerHTML = result;
+          document.querySelector('.js-moves').innerHTML = `You <img class="move-icon" src="game-button/${playerMove}-emoji.png" alt="img">
+      Computer <img class="move-icon" src="game-button/${computerMove}-emoji.png" alt="img">`;
+          
+      }
+      function updateScore(){
+        document.querySelector('.js-score')
+            .innerHTML = `Wins: ${score.wins} Draws: ${score.draw} Losses: ${score.losses}`;
+            
+      }
+      function showMoves(){
+        document.querySelector('.show-moves').innerHTML = ` You Picked ${playerMove}, Computer Picks ${computerMove}`;
       }
      
         function pickComputerMove(){
@@ -96,17 +77,13 @@ Wins: ${score.wins} Draws: ${score.draw} Losses: ${score.losses}`);
           let computerMove = "";
           
             if(randomNumber >= 0 && randomNumber < 1/3){
-              computerMove = 'Rock';
+              computerMove = 'rock';
             }
             else if(randomNumber >= 1/3 && randomNumber < 2/3){
-              computerMove = 'Paper';
+              computerMove = 'paper';
             }
             else if(randomNumber >= 2/3 && randomNumber < 1){
-              computerMove = 'Scissors';
+              computerMove = 'scissors';
             }
             return computerMove;
         }
-        
-    </script>
-  </body>
-</html>
